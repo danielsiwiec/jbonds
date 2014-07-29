@@ -1,6 +1,6 @@
 package org.jbonds.json;
 
-import org.jbonds.contract.Contract;
+import org.jbonds.contract.Bond;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,9 +13,9 @@ public class JsonReaderTest {
 
     @Test
     public void shouldReadRequest() throws IOException {
-        Contract contract = JsonReader.parse(resourceAsString("fakes/simple.json"));
-        assertThat(contract.getRequest(), is("Request body"));
-        assertThat(contract.getResponse(), is("Response body"));
+        Bond bond = JsonReader.parse(resourceAsString("fakes/simple.json"));
+        assertThat(bond.getRequest(), is("Request body"));
+        assertThat(bond.getResponse(), is("Response body"));
     }
 
 }

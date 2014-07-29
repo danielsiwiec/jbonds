@@ -20,7 +20,7 @@ public class BondsRunnerTest {
 
     @Test
     public void shouldPassTestsIfBondsMatch() throws IOException {
-        URL contract = Resources.getResource("contracts/simpleGetContract.json");
+        URL contract = Resources.getResource("contracts/simpleGetBond.json");
         BondsRunner bondsRunner = new BondsRunner("http://localhost:8080");
         boolean result = bondsRunner.checkGetBonds(contract);
         assertThat(result, is(true));

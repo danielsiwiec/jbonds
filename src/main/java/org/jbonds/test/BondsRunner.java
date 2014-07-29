@@ -5,7 +5,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.jbonds.contract.Contract;
+import org.jbonds.contract.Bond;
 import org.jbonds.json.JsonReader;
 
 import java.io.File;
@@ -25,9 +25,9 @@ public class BondsRunner {
     public boolean checkGetBonds(URL bondsLocation) throws IOException {
         String filePath = bondsLocation.getPath();
         String fileContents = FileUtils.readFileToString(new File(filePath));
-        Contract contract = JsonReader.parse(fileContents);
+        Bond bond = JsonReader.parse(fileContents);
         HttpGet get = new HttpGet(serverUrl);
         String response = EntityUtils.toString(httpClient.execute(get).getEntity());
-        return response.equals(contract.getResponse());
+        return response.equals(bond.getResponse());
     }
 }
