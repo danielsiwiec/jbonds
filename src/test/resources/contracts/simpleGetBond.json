@@ -1,3 +1,4 @@
 {
-    "response": "GET response"
+    "response": "GET response",
+    "method": "GET"
 }

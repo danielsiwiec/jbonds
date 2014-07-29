@@ -7,9 +7,11 @@ public class Bond {
 
     private String request;
     private String response;
+    private Method method;
 
     public Bond(){
-        request = "";
-        response = "";
+        request = null;
+        response = null;
+        method = null;
     }
 }

@@ -12,12 +12,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class BondsRunner {
+public class BondRunner {
 
     private final CloseableHttpClient httpClient;
     private String serverUrl;
 
-    public BondsRunner(String serverUrl) {
+    public BondRunner(String serverUrl) {
         this.serverUrl = serverUrl;
         httpClient = HttpClients.createDefault();
     }

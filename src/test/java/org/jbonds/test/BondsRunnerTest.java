@@ -2,6 +2,7 @@ package org.jbonds.test;
 
 import com.google.common.io.Resources;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,9 +20,18 @@ public class BondsRunnerTest {
     }
 
     @Test
-    public void shouldPassTestsIfBondsMatch() throws IOException {
+    public void shouldPassIfGetBondMatches() throws IOException {
         URL contract = Resources.getResource("contracts/simpleGetBond.json");
-        BondsRunner bondsRunner = new BondsRunner("http://localhost:8080");
+        BondRunner bondsRunner = new BondRunner("http://localhost:8080");
+        boolean result = bondsRunner.checkGetBonds(contract);
+        assertThat(result, is(true));
+    }
+ 
+    @Test
+    @Ignore
+    public void shouldPassIfPostBondMatches() throws IOException {
+        URL contract = Resources.getResource("contracts/simplePostBond.json");
+        BondRunner bondsRunner = new BondRunner("http://localhost:8080");
         boolean result = bondsRunner.checkGetBonds(contract);
         assertThat(result, is(true));
     }
