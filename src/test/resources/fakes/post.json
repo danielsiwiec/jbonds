@@ -1,5 +1,7 @@
 {
     "request": "POST request",
     "response": "POST response",
-    "method": "POST"
+    "method": "POST",
+    "path": "/person/1",
+    "status": 201
 }

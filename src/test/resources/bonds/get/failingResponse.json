@@ -1,0 +1,6 @@
+{
+    "path" : "/person/1",
+    "response": "ID: 1",
+    "method": "GET",
+    "status": 200
+}

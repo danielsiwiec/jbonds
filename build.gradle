@@ -7,9 +7,8 @@ dependencies {
     compile 'org.projectlombok:lombok:1.14.4'
     compile 'org.apache.httpcomponents:httpclient:4.3.4'
     compile 'commons-io:commons-io:2.4'
+    testCompile 'by.stub:stubby4j:2.0.17'
     testCompile 'junit:junit:4.11'
-    testCompile 'org.eclipse.jetty:jetty-server:9.2.2.v20140723'
-    testCompile 'org.eclipse.jetty:jetty-servlet:9.2.2.v20140723'
 }
 
 repositories {

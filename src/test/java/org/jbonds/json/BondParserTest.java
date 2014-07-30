@@ -10,21 +10,24 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.jbonds.helper.ResourceReader.resourceAsString;
 
-public class JsonReaderTest {
+public class BondParserTest {
 
     @Test
     public void shouldReadGetBond() throws IOException {
-        Bond bond = JsonReader.parse(resourceAsString("contracts/simpleGetBond.json"));
-        assertThat(bond.getResponse(), is("GET response"));
+        Bond bond = BondParser.parse(resourceAsString("fakes/get.json"));
+        assertThat(bond.getResponse(), is("Person id: 1"));
         assertThat(bond.getMethod(), is(Method.GET));
+        assertThat(bond.getPath(), is("/person/1"));
+        assertThat(bond.getStatus(), is(200));
     }
 
     @Test
     public void shouldReadPostBond() throws IOException {
-        Bond bond = JsonReader.parse(resourceAsString("contracts/simplePostBond.json"));
+        Bond bond = BondParser.parse(resourceAsString("fakes/post.json"));
         assertThat(bond.getRequest(), is("POST request"));
         assertThat(bond.getResponse(), is("POST response"));
         assertThat(bond.getMethod(), is(Method.POST));
+        assertThat(bond.getStatus(), is(201));
     }
 
 }

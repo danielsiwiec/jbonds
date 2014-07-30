@@ -1,0 +1,10 @@
+-  request:
+      method: GET
+      url: /person/1
+
+   response:
+      headers:
+         content-type: application/json
+      status: 200
+      body: >
+         Person id: 1

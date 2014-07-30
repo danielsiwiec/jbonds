@@ -1,5 +1,6 @@
-package org.jbonds.helper;
+package org.jbonds.helper.test;
 
+import org.jbonds.helper.ResourceReader;
 import org.junit.Test;
 
 import java.io.IOException;
