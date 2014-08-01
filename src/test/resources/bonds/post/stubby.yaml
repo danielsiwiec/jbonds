@@ -1,0 +1,11 @@
+-  request:
+      method: POST
+      url: /person/1
+      post: >
+         {"personId": 1}
+
+   response:
+      headers:
+         content-type: application/json
+      status: 200
+      body: Created

@@ -1,6 +1,6 @@
 {
     "path" : "/person/1",
-    "response": "Created",
+    "response": "id:1",
     "request": "{\"personId\": 1}",
     "method": "POST",
     "status": 200

@@ -2,6 +2,7 @@ package org.jbonds.bond;
 
 import com.google.common.io.Resources;
 import org.jbonds.helper.Stubby;
+import org.jbonds.helper.UrlBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,8 +13,9 @@ import java.net.URL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.jbonds.helper.StubbyHelper.startStubby;
+import static org.jbonds.helper.UrlBuilder.buildLocalUrl;
 
-public class BondsRunnerTest {
+public class BondsExecutorGetTest {
 
     private static Stubby stubby;
 
@@ -30,7 +32,7 @@ public class BondsRunnerTest {
     @Test
     public void shouldPassIfGetBondMatches() throws IOException {
         URL bondLocation = Resources.getResource("bonds/get/passing.json");
-        BondRunner bondsRunner = new BondRunner("http://localhost:" + stubby.getPort());
+        BondExecutor bondsRunner = new BondExecutor(buildLocalUrl(stubby.getPort()));
         boolean result = bondsRunner.checkBond(bondLocation);
         assertThat(result, is(true));
     }
@@ -38,7 +40,7 @@ public class BondsRunnerTest {
     @Test
     public void shouldFailIfGetBondMismatchesResponse() throws IOException {
         URL bondLocation = Resources.getResource("bonds/get/failingResponse.json");
-        BondRunner bondsRunner = new BondRunner("http://localhost:" + stubby.getPort());
+        BondExecutor bondsRunner = new BondExecutor(buildLocalUrl(stubby.getPort()));
         boolean result = bondsRunner.checkBond(bondLocation);
         assertThat(result, is(false));
     }
@@ -46,16 +48,9 @@ public class BondsRunnerTest {
     @Test
     public void shouldFailIfGetBondMismatchesStatus() throws IOException {
         URL bondLocation = Resources.getResource("bonds/get/failingStatus.json");
-        BondRunner bondsRunner = new BondRunner("http://localhost:" + stubby.getPort());
+        BondExecutor bondsRunner = new BondExecutor("http://localhost:" + stubby.getPort());
         boolean result = bondsRunner.checkBond(bondLocation);
         assertThat(result, is(false));
     }
 
-    @Test
-    public void shouldPassIfPostBondMatches() throws IOException {
-        URL bondLocation = Resources.getResource("bonds/get/passing.json");
-        BondRunner bondsRunner = new BondRunner("http://localhost:" + stubby.getPort());
-        boolean result = bondsRunner.checkBond(bondLocation);
-        assertThat(result, is(true));
-    }
 }

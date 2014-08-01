@@ -34,9 +34,9 @@ public class StubbyHelperTest {
     }
 
     @Test
-    public void doGet_ShouldMakeSuccessfulGet() throws Exception {
+    public void shouldMakeSuccessfulGet() throws Exception {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet get = new HttpGet(buildUrl("localhost",stubby.getPort(), "/item/1"));
+        HttpGet get = new HttpGet(buildUrl(stubby.getPort(), "/item/1"));
         CloseableHttpResponse httpResponse = httpClient.execute(get);
         assertThat(httpResponse.getStatusLine().getStatusCode(), is(HttpStatus.OK_200));
         assertThat("{\"id\" : \"1\", \"description\" : \"milk\"}", equalTo(EntityUtils.toString(httpResponse.getEntity())));
@@ -44,13 +44,13 @@ public class StubbyHelperTest {
     }
 
     @Test
-    public void doPost_ShouldMakeSuccessfulPost() throws Exception {
+    public void shouldMakeSuccessfulPost() throws Exception {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost post = new HttpPost(buildUrl("localhost",stubby.getPort(), "/item/1"));
+        HttpPost post = new HttpPost(buildUrl(stubby.getPort(), "/item/1"));
         post.setEntity(new StringEntity("post body"));
         CloseableHttpResponse httpResponse = httpClient.execute(post);
 
         assertThat(httpResponse.getStatusLine().getStatusCode(), is(HttpStatus.OK_200));
-        assertThat("Got post response", equalTo(EntityUtils.toString(httpResponse.getEntity())));
+        assertThat("post response", equalTo(EntityUtils.toString(httpResponse.getEntity())));
     }
 }
