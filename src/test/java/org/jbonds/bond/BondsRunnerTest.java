@@ -50,4 +50,12 @@ public class BondsRunnerTest {
         boolean result = bondsRunner.checkBond(bondLocation);
         assertThat(result, is(false));
     }
+
+    @Test
+    public void shouldPassIfPostBondMatches() throws IOException {
+        URL bondLocation = Resources.getResource("bonds/get/passing.json");
+        BondRunner bondsRunner = new BondRunner("http://localhost:" + stubby.getPort());
+        boolean result = bondsRunner.checkBond(bondLocation);
+        assertThat(result, is(true));
+    }
 }

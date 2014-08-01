@@ -18,4 +18,4 @@
       headers:
          content-type: text/plain
       status: 200
-      body: Got post response
+      body: post response
