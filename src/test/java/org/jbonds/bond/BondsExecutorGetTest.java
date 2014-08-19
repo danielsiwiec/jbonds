@@ -2,7 +2,6 @@ package org.jbonds.bond;
 
 import com.google.common.io.Resources;
 import org.jbonds.helper.Stubby;
-import org.jbonds.helper.UrlBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -48,7 +47,7 @@ public class BondsExecutorGetTest {
     @Test
     public void shouldFailIfGetBondMismatchesStatus() throws IOException {
         URL bondLocation = Resources.getResource("bonds/get/failingStatus.json");
-        BondExecutor bondsRunner = new BondExecutor("http://localhost:" + stubby.getPort());
+        BondExecutor bondsRunner = new BondExecutor(buildLocalUrl(stubby.getPort()));
         boolean result = bondsRunner.checkBond(bondLocation);
         assertThat(result, is(false));
     }

@@ -1,7 +1,6 @@
 package org.jbonds;
 
 import com.google.common.collect.ImmutableMap;
-import org.jbonds.bond.BondExecutor;
 import org.jbonds.helper.Stubby;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -34,7 +33,7 @@ public class JBondsTest {
     public void shouldRunAllBondsForList(){
         URL failingPost = getResource("bonds/post/failingResponse.json");
         URL passingGet = getResource("bonds/get/passing.json");
-        JBonds jBonds = new JBonds(new BondExecutor(buildLocalUrl(stubby.getPort())), failingPost, passingGet);
+        JBonds jBonds = new JBonds(buildLocalUrl(stubby.getPort()), failingPost, passingGet);
         Map<URL, Boolean> actual = jBonds.run();
         Map<URL, Boolean> expected = ImmutableMap.<URL, Boolean>builder().put(failingPost, false).put(passingGet, true).build();
         assertThat(actual, is(expected));

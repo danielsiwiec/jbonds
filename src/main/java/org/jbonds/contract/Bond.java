@@ -6,16 +6,15 @@ import lombok.Value;
 public class Bond {
 
     private String request;
-    private String response;
     private Method method;
     private String path;
-    private int status;
+    private Response response;
+
 
     public Bond(){
         request = null;
-        response = null;
         method = null;
         path = null;
-        status = 0;
+        response = null;
     }
 }

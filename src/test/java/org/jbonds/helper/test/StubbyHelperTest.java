@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.jbonds.helper.StubbyHelper.startStubby;
-import static org.jbonds.helper.UrlBuilder.buildUrl;
+import static org.jbonds.helper.UrlBuilder.buildLocalUrl;
 
 public class StubbyHelperTest {
 
@@ -36,7 +36,7 @@ public class StubbyHelperTest {
     @Test
     public void shouldMakeSuccessfulGet() throws Exception {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet get = new HttpGet(buildUrl(stubby.getPort(), "/item/1"));
+        HttpGet get = new HttpGet(buildLocalUrl(stubby.getPort(), "/item/1"));
         CloseableHttpResponse httpResponse = httpClient.execute(get);
         assertThat(httpResponse.getStatusLine().getStatusCode(), is(HttpStatus.OK_200));
         assertThat("{\"id\" : \"1\", \"description\" : \"milk\"}", equalTo(EntityUtils.toString(httpResponse.getEntity())));
@@ -46,7 +46,7 @@ public class StubbyHelperTest {
     @Test
     public void shouldMakeSuccessfulPost() throws Exception {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost post = new HttpPost(buildUrl(stubby.getPort(), "/item/1"));
+        HttpPost post = new HttpPost(buildLocalUrl(stubby.getPort(), "/item/1"));
         post.setEntity(new StringEntity("post body"));
         CloseableHttpResponse httpResponse = httpClient.execute(post);
 

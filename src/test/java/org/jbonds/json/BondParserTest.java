@@ -15,19 +15,19 @@ public class BondParserTest {
     @Test
     public void shouldReadGetBond() throws IOException {
         Bond bond = BondParser.parse(resourceAsString("fakes/get.json"));
-        assertThat(bond.getResponse(), is("Person id: 1"));
+        assertThat(bond.getResponse().getBody(), is("Person id: 1"));
         assertThat(bond.getMethod(), is(Method.GET));
         assertThat(bond.getPath(), is("/person/1"));
-        assertThat(bond.getStatus(), is(200));
+        assertThat(bond.getResponse().getStatus(), is(200));
     }
 
     @Test
     public void shouldReadPostBond() throws IOException {
         Bond bond = BondParser.parse(resourceAsString("fakes/post.json"));
         assertThat(bond.getRequest(), is("POST request"));
-        assertThat(bond.getResponse(), is("POST response"));
+        assertThat(bond.getResponse().getBody(), is("POST response"));
         assertThat(bond.getMethod(), is(Method.POST));
-        assertThat(bond.getStatus(), is(201));
+        assertThat(bond.getResponse().getStatus(), is(201));
     }
 
 }

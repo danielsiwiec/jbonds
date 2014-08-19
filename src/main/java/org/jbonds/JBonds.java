@@ -16,8 +16,8 @@ public class JBonds {
     private final BondExecutor bondExecutor;
     private List<URL> resources;
 
-    public JBonds(BondExecutor bondExecutor, URL... resources) {
-        this.bondExecutor = bondExecutor;
+    public JBonds(String serverUrl, URL... resources) {
+        this.bondExecutor = new BondExecutor(serverUrl);
         this.resources = Arrays.asList(resources);
     }
 

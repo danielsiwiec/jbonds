@@ -18,6 +18,7 @@ import java.net.URL;
 public class BondExecutor {
 
     private final CloseableHttpClient httpClient;
+    private final ResponseAssessor responseAssessor = new ResponseAssessor();
     private String serverUrl;
 
     public BondExecutor(String serverUrl) {
@@ -42,7 +43,7 @@ public class BondExecutor {
                 httpResponse = httpClient.execute(post);
                 break;
         }
-        String response = EntityUtils.toString(httpResponse.getEntity());
-        return response.equals(bond.getResponse()) && httpResponse.getStatusLine().getStatusCode() == bond.getStatus();
+        return bond.getResponse().getStatus() == httpResponse.getStatusLine().getStatusCode() &&
+                responseAssessor.assessResponseMatch(EntityUtils.toString(httpResponse.getEntity()), bond.getResponse().getBody());
     }
 }

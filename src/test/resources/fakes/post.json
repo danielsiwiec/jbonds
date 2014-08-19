@@ -1,7 +1,9 @@
 {
     "request": "POST request",
-    "response": "POST response",
+    "response": {
+        "body": "POST response",
+        "status": 201
+    },
     "method": "POST",
-    "path": "/person/1",
-    "status": 201
+    "path": "/person/1"
 }
